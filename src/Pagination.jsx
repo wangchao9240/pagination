@@ -226,6 +226,14 @@ export default class Pagination extends React.Component {
     return this.state.current;
   }
 
+  home = () => {
+    this.handleChange(1)
+  }
+
+  end = () => {
+    this.handleChange(this.calculatePage())
+  }
+
   prev = () => {
     if (this.hasPrev()) {
       this.handleChange(this.state.current - 1);
@@ -540,6 +548,11 @@ export default class Pagination extends React.Component {
       >
         {totalText}
         <li
+          title={'第一页'}
+          className={`${!prevDisabled ? '' : `${prefixCls}-disabled`} ${prefixCls}-prev`}
+          onClick={this.home}
+        >{'<<'}</li>
+        <li
           title={props.showTitle ? locale.prev_page : null}
           onClick={this.prev}
           tabIndex={prevDisabled ? null : 0}
@@ -560,6 +573,11 @@ export default class Pagination extends React.Component {
         >
           {props.itemRender(nextPage, 'next', <a className={`${prefixCls}-item-link`} />)}
         </li>
+        <li
+          title={'尾页'}
+          className={`${!prevDisabled ? '' : `${prefixCls}-disabled`} ${prefixCls}-prev`}
+          onClick={this.end}
+        >{'>>'}</li>
         <Options
           locale={props.locale}
           rootPrefixCls={prefixCls}
