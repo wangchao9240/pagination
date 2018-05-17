@@ -227,11 +227,11 @@ export default class Pagination extends React.Component {
   }
 
   home = () => {
-    this.handleChange(1)
+    this.handleChange(1);
   }
 
   end = () => {
-    this.handleChange(this.calculatePage())
+    this.handleChange(this.calculatePage());
   }
 
   prev = () => {
